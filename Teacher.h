@@ -25,6 +25,8 @@ public:
     string Degree();
     string Department();
     string Info() const;
+    string LecternWithdrawal();
+    
 };
 
 

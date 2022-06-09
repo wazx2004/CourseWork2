@@ -14,6 +14,7 @@ public:
 	int AddPerformance();
 	void ChangeGenre(string NewGenre);
 	string Info() const;
+	string GenreActors();
 };
 
 #endif //COURSEWORK2_MASTER_ACTOR_H

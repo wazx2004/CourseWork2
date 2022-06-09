@@ -26,3 +26,7 @@ string Actor::Info() const
     return "Name:" + firstName + "\nSurname:" + lastName + "\nAge:" + to_string(age) + "\nHeight:" + to_string(height) + "\nWeight:" + to_string(weight) + "\nGender:" + gender
         + "\nEmail:" + email + "\nGenre:" + genre + "\nNumber of perfarmance:" + to_string(NumberOfPerformances);
 }
+string Actor::GenreActors()
+{
+    if (genre == "Drama") return firstName + " " + lastName;
+}

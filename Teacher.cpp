@@ -44,3 +44,7 @@ string Teacher::Info() const
         + "\nEmail:" + email + "\nUniversity:" + university + "\nSubject:" + subject + "\nDepartment:" + department + "\nExperience:" + to_string(experience)
         + "\nDegree:" + degree + "\nSalary:" + to_string(salary) + "\nNumberOfWorks:" + to_string(NumberOfWorks);
 }
+string Teacher::LecternWithdrawal()
+{
+    if (department == "KKI") return firstName + " " + lastName;
+}
