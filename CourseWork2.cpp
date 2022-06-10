@@ -34,15 +34,16 @@ int main()
 		cout << teach3.getName() << "\n";
 		cout << teach3.Info() << "\n\n";
 
-		/*vector<Teacher> teachers;
+		vector<Teacher> teachers;
 		teachers.push_back(teach1);
 		teachers.push_back(teach2);
 		teachers.push_back(teach3);
 		cout << "Department 'KKI':";
-		for (int i = 0; i < teachers.size(); i++)
+		for (auto & teacher : teachers)
 		{
-			cout  << teachers[i].LecternWithdrawal() << " " << "\n\n\n";
-		}*/
+			cout  << teacher.LecternWithdrawal() <<"\n";
+		}
+		cout << "\n\n";
 
 		//FirstName, LastName, Age, Height, Weight, Gender, Email, genre, NumberOfPerformances
 		Actor actor1("Petro", "Pavlovich", 77, 172, 80, "man", " ", "Drama", 154);
@@ -66,9 +67,9 @@ int main()
 		actors.push_back(actor1);
 		actors.push_back(actor2);
 		actors.push_back(actor3);
-		for (int i = 1; i < actors.size(); i++)
+		for (auto & actor : actors)
 		{
-			cout << actors[i].GenreActors() << " ";
+			cout << actor.GenreActors() << "\n ";
 		}
 	}
 	catch (exception& ex)

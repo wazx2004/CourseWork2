@@ -47,4 +47,5 @@ string Teacher::Info() const
 string Teacher::LecternWithdrawal()
 {
     if (department == "KKI") return firstName + " " + lastName;
+    return "";
 }

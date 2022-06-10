@@ -29,4 +29,5 @@ string Actor::Info() const
 string Actor::GenreActors()
 {
     if (genre == "Drama") return firstName + " " + lastName;
+    return "";
 }
