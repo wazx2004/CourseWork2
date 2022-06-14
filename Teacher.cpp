@@ -27,17 +27,15 @@ void Teacher::CountSalary()
     if (degree == "Candidate") salary += (15 * salary) / 100;
     if (degree == "Doctor") salary += (20 * salary) / 100;
 }
+
 string Teacher::Degree()
 {
-    if (NumberOfWorks > 8) return degree = "Candidate";
-    if (NumberOfWorks > 25) return degree = "Doctor";
-    return degree = "None";
+    if (NumberOfWorks > 25) degree = "Doctor";
+    else if (NumberOfWorks > 8) degree = "Candidate";
+    else degree = "None";
+    return degree;
 }
 
-string Teacher::Department()
-{
-    return department;
-}
 string Teacher::Info() const
 {
     return "Name:" + firstName + "\nSurname:" + lastName + "\nAge:" + to_string(age) + "\nHeight:" + to_string(height) + "\nWeight:" + to_string(weight) + "\nGender:" + gender

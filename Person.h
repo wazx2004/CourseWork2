@@ -17,6 +17,9 @@ protected:
     string gender;
     string email;
 
+    Person* mother;
+    Person* father;
+
 public:
     Person();
     Person(string FirstName, string LastName, int Age, int Height, double Weight, string Gender, string Email);
@@ -27,7 +30,16 @@ public:
     bool isLegalAge() const;
     bool isManOfMilitaryAge() const;
 
+    bool isMyBrother(Person* person) const;
+    bool isMyGrandfather(Person* person) const;
+    bool isMyGrandson(Person* person) const;
+
+    void setMother(Person* mother);
+    void setFather(Person* father);
+    Person* getMother() const;
+    Person* getFather() const;
 };
 #endif //COURSEWORK2_MASTER_PERSON_H
+
 
 

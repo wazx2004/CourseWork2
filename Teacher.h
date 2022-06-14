@@ -23,7 +23,6 @@ public:
 
     void CountSalary();
     string Degree();
-    string Department();
     string Info() const;
     string LecternWithdrawal();
     

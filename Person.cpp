@@ -19,14 +19,13 @@ Person::Person() {
 Person::Person(string FirstName, string LastName, int Age, int Height, double Weight, string Gender, string Email)
     :firstName(FirstName), lastName(LastName), age(Age), height(Height), weight(Weight), gender(Gender), email(Email)
 {
-    if (!FirstName.empty()) firstName = FirstName; else throw invalid_argument("Empty string!");
-    if (!LastName.empty()) lastName = LastName; else throw invalid_argument("Empty string!");
-    if (Age > 0) age = Age; else throw invalid_argument("Invalid age!");
-    if (Height > 0) height = Height; else throw invalid_argument("Invalid height!");
-    if (Weight > 0) weight = Weight; else throw invalid_argument("Invalid weight!");
-    if (!Gender.empty()) gender = Gender; else throw invalid_argument("Empty string!");
+    if (FirstName.empty()) throw invalid_argument("Empty string!");
+    if (LastName.empty())  throw invalid_argument("Empty string!");
+    if (Age <= 0)     throw invalid_argument("Invalid age!");
+    if (Height <= 0)  throw invalid_argument("Invalid height!");
+    if (Weight <= 0)  throw invalid_argument("Invalid weight!");
+    if (Gender.empty())throw invalid_argument("Empty string!");
     if (Email.empty()) email = "None";
-    else { email = Email; }
 }
 
 string Person::getName() const
@@ -60,4 +59,38 @@ bool Person::isManOfMilitaryAge() const
     if (isLegalAge() && gender == "Man") return true;
     return false;
 }
+    bool Person::isMyBrother(Person * person) const {
+        if (person->getFather() == father || person->getMother() == mother) return true;
+        return false;
+    }
+
+    bool Person::isMyGrandfather(Person * person) const {
+        if (person == father->getFather() || person == father->getMother()
+            || person == mother->getFather() || person == mother->getMother()) return true;
+        return false;
+    }
+
+    bool Person::isMyGrandson(Person * person) const {
+        if (person->getFather()->getFather()->getFather() == father
+            || person->getFather()->getMother()->getFather() == father
+            || person->getMother()->getFather()->getFather() == father
+            || person->getMother()->getMother()->getFather() == father) return true;
+        return false;
+    }
+
+    Person* Person::getMother() const {
+        return mother;
+    }
+    Person* Person::getFather() const {
+        return father;
+    }
+
+    void Person::setMother(Person * mother) {
+        this->mother = mother;
+    }
+
+    void Person::setFather(Person * father) {
+        this->father = father;
+    }
+
 
