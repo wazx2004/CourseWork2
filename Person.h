@@ -7,6 +7,8 @@
 
 using namespace std;
 
+enum class Gender {male,female};
+
 class Person
 {
 protected:
@@ -14,7 +16,7 @@ protected:
     int age;
     int height;
     double weight;
-    string gender;
+    Gender gender;
     string email;
 
     Person* mother;
@@ -22,22 +24,23 @@ protected:
 
 public:
     Person();
-    Person(string FirstName, string LastName, int Age, int Height, double Weight, string Gender, string Email);
+    Person(string FirstName, string LastName, int Age, int Height, double Weight, Gender Gender, string Email,Person*mother = NULL,Person*father = NULL);
 
+    virtual string Info() const;
     string getName() const;
     void changeEmail(string Email);
-    void printInfoAboutPerson() const;
     bool isLegalAge() const;
     bool isManOfMilitaryAge() const;
 
-    bool isMyBrother(Person* person) const;
-    bool isMyGrandfather(Person* person) const;
-    bool isMyGrandson(Person* person) const;
+    bool isMyBrother(const Person* person) const;
+    bool isMyGrandfather(const Person* person) const;
+    bool isMyGrandson(const Person* person) const;
 
     void setMother(Person* mother);
     void setFather(Person* father);
     Person* getMother() const;
     Person* getFather() const;
+    string GenderToString() const;
 };
 #endif //COURSEWORK2_MASTER_PERSON_H
 

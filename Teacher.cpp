@@ -5,11 +5,11 @@ using namespace std;
 Teacher::Teacher() :Person(), university("None"), subject("None"), department("None"), experience(0), degree("None"), salary(0), NumberOfWorks(0) {}
 
 Teacher::Teacher(string FirstName, string LastName, int Age, int Height, double Weight,
-    string Gender, string Email,
+    Gender gender, string Email,
     string university, string subject,
     string department, int experience, string degree, int salary,
     int NumberOfWorks) :
-    Person(FirstName, LastName, Age, Height, Weight, Gender, Email), university(university), subject(subject),
+    Person(FirstName, LastName, Age, Height, Weight, gender, Email), university(university), subject(subject),
     department(department), experience(experience), degree(degree), salary(salary), NumberOfWorks(NumberOfWorks)
 {
     if (university.empty()) throw invalid_argument("Empty string!");
@@ -38,12 +38,11 @@ string Teacher::Degree()
 
 string Teacher::Info() const
 {
-    return "Name:" + firstName + "\nSurname:" + lastName + "\nAge:" + to_string(age) + "\nHeight:" + to_string(height) + "\nWeight:" + to_string(weight) + "\nGender:" + gender
-        + "\nEmail:" + email + "\nUniversity:" + university + "\nSubject:" + subject + "\nDepartment:" + department + "\nExperience:" + to_string(experience)
+    return Person::Info() + "\nUniversity:" + university + "\nSubject:" + subject + "\nDepartment:" + department + "\nExperience:" + to_string(experience)
         + "\nDegree:" + degree + "\nSalary:" + to_string(salary) + "\nNumberOfWorks:" + to_string(NumberOfWorks);
 }
-string Teacher::LecternWithdrawal()
+string Teacher::LecternWithdrawal(const string& Dep) const
 {
-    if (department == "KKI") return firstName + " " + lastName;
+    if (department == Dep) return firstName + " " + lastName;
     return "";
 }

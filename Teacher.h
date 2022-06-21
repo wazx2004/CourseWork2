@@ -3,6 +3,7 @@
 #include "Person.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 
@@ -18,13 +19,13 @@ private:
     int NumberOfWorks;
 public:
     Teacher();
-    Teacher(string FirstName, string LastName, int Age, int Height, double Weight, string Gender, string Email,
+    Teacher(string FirstName, string LastName, int Age, int Height,double Weight, Gender gender, string Email, 
         string university, string subject, string department, int experience, string degree, int salary, int NumberOfWorks);
 
     void CountSalary();
     string Degree();
-    string Info() const;
-    string LecternWithdrawal();
+    string Info() const override;
+    string LecternWithdrawal(const string& Dep) const;
     
 };
 

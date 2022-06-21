@@ -3,13 +3,13 @@
 #include <string>
 using namespace std;
 
-Actor::Actor() :Person(), genre("None"), NumberOfPerformances(0) {}
+Actor::Actor() : Person(){ genre = Genre::Comedy; NumberOfPerformances = 0; }
 
-Actor::Actor(string FirstName, string LastName, int Age, int Height, double Weight, string Gender, string Email,
-    string genre, int NumberOfPerformances) :
-    Person(FirstName, LastName, Age, Height, Weight, Gender, Email), genre(genre), NumberOfPerformances(NumberOfPerformances)
+Actor::Actor(string FirstName, string LastName, int Age, int Height, double Weight, Gender gender, string Email,
+    Genre genre, int NumberOfPerformances) :
+    Person(FirstName, LastName, Age, Height, Weight, gender, Email), genre(genre), NumberOfPerformances(NumberOfPerformances)
 {
-    if (genre.empty()) throw invalid_argument("Invalid string!");
+    //if (genre.empty()) throw invalid_argument("Invalid string!");
     if (NumberOfPerformances < 0) throw invalid_argument("Invalid string!");
 }
 int Actor::AddPerformance()
@@ -17,17 +17,18 @@ int Actor::AddPerformance()
     NumberOfPerformances++;
     return NumberOfPerformances;
 }
-void Actor::ChangeGenre(string NewGenre)
+void Actor::ChangeGenre(const string& NewGenre)
 {
-    genre = NewGenre;
+    if (NewGenre.empty()) throw invalid_argument("Invalid string!");
+    genre = genre;
 }
 string Actor::Info() const
 {
-    return "Name:" + firstName + "\nSurname:" + lastName + "\nAge:" + to_string(age) + "\nHeight:" + to_string(height) + "\nWeight:" + to_string(weight) + "\nGender:" + gender
-        + "\nEmail:" + email + "\nGenre:" + genre + "\nNumber of perfarmance:" + to_string(NumberOfPerformances);
+    return Person::Info() + "\nGenre:" + GenreToString() + "\nNumber of perfarmance:" + to_string(NumberOfPerformances);
 }
-string Actor::GenreActors()
+string Actor::GenreActors() const
 {
-    if (genre == "Drama") return firstName + " " + lastName;
+    if (genre == Genre::Drama) return firstName + " " + lastName;
     return "";
 }
+string Actor::GenreToString() const { return (genre == Genre::Comedy ? "Comedy" : "Drama"); }

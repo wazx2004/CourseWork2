@@ -12,19 +12,19 @@ Person::Person() {
     age = 0;
     height = 0;
     weight = 0;
-    gender = "None";
+    gender = Gender::male;
     email = "None";
 }
 
-Person::Person(string FirstName, string LastName, int Age, int Height, double Weight, string Gender, string Email)
-    :firstName(FirstName), lastName(LastName), age(Age), height(Height), weight(Weight), gender(Gender), email(Email)
+Person::Person(string FirstName, string LastName, int Age, int Height, double Weight, Gender gender, string Email, Person* mother, Person* father)
+    :firstName(FirstName), lastName(LastName), age(Age), height(Height), weight(Weight), gender(gender), email(Email),mother(mother),father(father)
 {
     if (FirstName.empty()) throw invalid_argument("Empty string!");
     if (LastName.empty())  throw invalid_argument("Empty string!");
     if (Age <= 0)     throw invalid_argument("Invalid age!");
     if (Height <= 0)  throw invalid_argument("Invalid height!");
     if (Weight <= 0)  throw invalid_argument("Invalid weight!");
-    if (Gender.empty())throw invalid_argument("Empty string!");
+   // if (Gender.empty())throw invalid_argument("Empty string!");
     if (Email.empty()) email = "None";
 }
 
@@ -40,15 +40,6 @@ void Person::changeEmail(string Email)
         email = Email;
     }
 }
-void Person::printInfoAboutPerson() const
-{
-    cout << "Name: " << firstName << " " << lastName << endl
-        << "Age: " << age << endl
-        << "Height: " << height << endl
-        << "Weight: " << weight << endl
-        << "Gender: " << gender << endl
-        << "Email: " << email << endl;
-}
 bool Person::isLegalAge() const
 {
     if (age > 17) return true;
@@ -56,26 +47,34 @@ bool Person::isLegalAge() const
 }
 bool Person::isManOfMilitaryAge() const
 {
-    if (isLegalAge() && gender == "Man") return true;
+    if (isLegalAge() && gender == Gender::male && age < 60) return true;
     return false;
 }
-    bool Person::isMyBrother(Person * person) const {
+    bool Person::isMyBrother(const Person * person) const {
         if (person->getFather() == father || person->getMother() == mother) return true;
         return false;
     }
 
-    bool Person::isMyGrandfather(Person * person) const {
+    bool Person::isMyGrandfather(const Person * person) const {
         if (person == father->getFather() || person == father->getMother()
             || person == mother->getFather() || person == mother->getMother()) return true;
         return false;
     }
 
-    bool Person::isMyGrandson(Person * person) const {
-        if (person->getFather()->getFather()->getFather() == father
-            || person->getFather()->getMother()->getFather() == father
-            || person->getMother()->getFather()->getFather() == father
-            || person->getMother()->getMother()->getFather() == father) return true;
-        return false;
+    bool Person::isMyGrandson(const Person * person) const
+    {
+        if (gender == Gender::male)
+        {
+            return
+            (person->getFather()-> getFather() == this ||
+            person->getMother()->getFather() == this);
+        }
+        else
+        {
+            return
+                (person->getFather()->getMother() == this ||
+                 person->getMother()->getMother() == this);
+        }
     }
 
     Person* Person::getMother() const {
@@ -92,5 +91,11 @@ bool Person::isManOfMilitaryAge() const
     void Person::setFather(Person * father) {
         this->father = father;
     }
+
+    string Person::Info() const {
+        return "Name:" + firstName + "\nSurname:" + lastName + "\nAge:" + to_string(age) + "\nHeight:" + to_string(height) + "\nWeight:" + to_string(weight) + "\nGender:" + GenderToString()
+            + "\nEmail:" + email;
+    }
+    string Person::GenderToString() const { return ( gender == Gender::male ? "Male" : "Female"); }
 
 
