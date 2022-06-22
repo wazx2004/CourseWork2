@@ -2,7 +2,7 @@
 #include "Person.h"
 using namespace std;
 
-Teacher::Teacher() :Person(), university("None"), subject("None"), department("None"), experience(0), degree("None"), salary(0), NumberOfWorks(0) {}
+Teacher::Teacher() :Person(), university("None"), subject("None"), department("None") ,experience(0), /*degree("None"),*/ salary(0), NumberOfWorks(0) {}
 
 Teacher::Teacher(string FirstName, string LastName, int Age, int Height, double Weight,
     Gender gender, string Email,
@@ -10,12 +10,12 @@ Teacher::Teacher(string FirstName, string LastName, int Age, int Height, double 
     string department, int experience, string degree, int salary,
     int NumberOfWorks) :
     Person(FirstName, LastName, Age, Height, Weight, gender, Email), university(university), subject(subject),
-    department(department), experience(experience), degree(degree), salary(salary), NumberOfWorks(NumberOfWorks)
+    department(department), experience(experience), /*degree(degree),*/ salary(salary), NumberOfWorks(NumberOfWorks)
 {
     if (university.empty()) throw invalid_argument("Empty string!");
     if (subject.empty()) throw invalid_argument("Empty string!");
     if (department.empty()) throw invalid_argument("Empty string!");
-    if (degree.empty()) throw invalid_argument("Empty string!");
+    //if (degree.empty()) throw invalid_argument("Empty string!");
     if (experience < 0) throw invalid_argument("Empty string!");
     if (salary <= 0) throw invalid_argument("Empty string!");
     if (NumberOfWorks < 0) throw invalid_argument("Empty string!");

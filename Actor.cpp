@@ -17,10 +17,9 @@ int Actor::AddPerformance()
     NumberOfPerformances++;
     return NumberOfPerformances;
 }
-void Actor::ChangeGenre(Genre NewGenre)
+void Actor::ChangeGenre(int NewGenre)
 {
-    if (static_cast<int>(NewGenre) < 0 || static_cast<int>(NewGenre) > 2) throw invalid_argument("Invalid string!");
-    genre = NewGenre;
+    genre = static_cast<Genre>(NewGenre);
 }
 string Actor::Info() const
 {

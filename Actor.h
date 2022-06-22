@@ -14,7 +14,7 @@ public:
 	Actor(string FirstName, string LastName, int Age, int Height,
 		double Weight, Gender gender, string Email, Genre genre, int NumberOfPerformances);
 	int AddPerformance();
-	void ChangeGenre(Genre NewGenre);
+	void ChangeGenre(int NewGenre);
 	string Info() const override;
 	string GenreActors() const;
 	string GenreToString() const;
