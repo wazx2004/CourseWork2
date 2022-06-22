@@ -1,8 +1,7 @@
 #include "Person.h"
 #include <iostream>
 #include <string>
-#include <stdexcept>
-#include <exception>
+
 
 using namespace std;
 
@@ -50,8 +49,8 @@ bool Person::isManOfMilitaryAge() const
     if (isLegalAge() && gender == Gender::male && age < 60) return true;
     return false;
 }
-    bool Person::isMyBrother(const Person * person) const {
-        if (person->getFather() == father || person->getMother() == mother) return true;
+    bool Person::isMyBrother(const Person * person1) const {
+        if (person1->getFather() == father || person1->getMother() == mother) return true;
         return false;
     }
 
@@ -61,19 +60,19 @@ bool Person::isManOfMilitaryAge() const
         return false;
     }
 
-    bool Person::isMyGrandson(const Person * person) const
+    bool Person::isMyGrandson(const Person* person) const
     {
         if (gender == Gender::male)
         {
             return
-            (person->getFather()-> getFather() == this ||
-            person->getMother()->getFather() == this);
+                (person->getFather()->getFather() == this ||
+                    person->getMother()->getFather() == this);
         }
         else
         {
             return
                 (person->getFather()->getMother() == this ||
-                 person->getMother()->getMother() == this);
+                    person->getMother()->getMother() == this);
         }
     }
 

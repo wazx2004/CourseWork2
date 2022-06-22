@@ -2,7 +2,7 @@
 #define COURSEWORK2_MASTER_ACTOR_H
 #include "Person.h"
 
-enum class Genre{Comedy,Drama};
+enum class Genre{Comedy,Drama,Melodrama};
 class Actor :
 	public Person
 {
@@ -14,7 +14,7 @@ public:
 	Actor(string FirstName, string LastName, int Age, int Height,
 		double Weight, Gender gender, string Email, Genre genre, int NumberOfPerformances);
 	int AddPerformance();
-	void ChangeGenre(const string& genre);
+	void ChangeGenre(Genre NewGenre);
 	string Info() const override;
 	string GenreActors() const;
 	string GenreToString() const;

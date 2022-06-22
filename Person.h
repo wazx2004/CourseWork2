@@ -32,7 +32,7 @@ public:
     bool isLegalAge() const;
     bool isManOfMilitaryAge() const;
 
-    bool isMyBrother(const Person* person) const;
+    bool isMyBrother(const Person* person1) const;
     bool isMyGrandfather(const Person* person) const;
     bool isMyGrandson(const Person* person) const;
 

@@ -17,10 +17,10 @@ int Actor::AddPerformance()
     NumberOfPerformances++;
     return NumberOfPerformances;
 }
-void Actor::ChangeGenre(const string& NewGenre)
+void Actor::ChangeGenre(Genre NewGenre)
 {
-    if (NewGenre.empty()) throw invalid_argument("Invalid string!");
-    genre = genre;
+    if (static_cast<int>(NewGenre) < 0 || static_cast<int>(NewGenre) > 2) throw invalid_argument("Invalid string!");
+    genre = NewGenre;
 }
 string Actor::Info() const
 {
@@ -31,4 +31,4 @@ string Actor::GenreActors() const
     if (genre == Genre::Drama) return firstName + " " + lastName;
     return "";
 }
-string Actor::GenreToString() const { return (genre == Genre::Comedy ? "Comedy" : "Drama"); }
+string Actor::GenreToString() const { return (genre == Genre::Comedy ? "Comedy" : (genre == Genre::Drama ? "Drama" : "Melodrama")); }

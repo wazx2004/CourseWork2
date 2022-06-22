@@ -27,10 +27,11 @@ int main()
 		p5.setFather(&p4);
 		// p5 is a dad of p6
 		p6.setFather(&p5);
-		//is p1 a grandfather of p4
+		//is p4 a grandfather of p4
 		cout << "Is p4 a grandfather of p6?";
 		if (p4.isMyGrandson(&p6)) cout << "-True" << "\n\n" << endl;
-		else cout << "False" << "\n\n" << endl;
+		else cout << "-False" << "\n\n" << endl;
+
 
 		// FirstName,LastName,Age,Height,Weight,Gender,Email,university,subject,department,experience,degree,salary,NumberOfWorks)
 		Teacher teach1("Ivan", "Ivanov", 45, 170, 70, Gender::male, "Ivanov.gmail", "Igor Sikorsky Kyiv Polytechnic Institute", "Math", "KKI", 9, "Doctor", 7700, 30);
@@ -42,7 +43,6 @@ int main()
 		cout << teach1.Info() << "\n\n\n";
 
 		Teacher teach2("Marina", "Nikolaevna", 27, 178, 65, Gender::female, "Marina.gmail", "Igor Sikorsky Kyiv Polytechnic Institute", "Math", "KKI", 4, " ", 7200, 5);
-
 		teach2.CountSalary();
 		cout << teach2.getName() << "\n";
 		teach2.changeEmail("Marrrrina.gmail");
@@ -50,9 +50,7 @@ int main()
 
 
 		Teacher teach3("Nikolay", "Olegovich", 37, 167, 57, Gender::male, " ", "Igor Sikorsky Kyiv Polytechnic Institute", "Math", "KPB", 6, "Candidate", 7500, 9);
-
 		teach3.CountSalary();
-
 		cout << teach3.getName() << "\n";
 		cout << teach3.Info() << "\n\n";
 
@@ -60,7 +58,6 @@ int main()
 		teachers.push_back(teach1);
 		teachers.push_back(teach2);
 		teachers.push_back(teach3);
-		//string Deps = "Department 'KKI':";
 		cout << "Department 'KKI':";
 		for (auto & teacher : teachers)
 		{
@@ -69,21 +66,20 @@ int main()
 		cout << "\n\n";
 
 		//FirstName, LastName, Age, Height, Weight, Gender, Email, genre, NumberOfPerformances
-		Actor actor1("Petro", "Pavlovich", 77, 172, 80, Gender::male, " ", Genre::Drama, 154);
+		Actor actor1("Petro", "Pavlovich", 77, 172, 80, Gender::male, " ", Genre::Melodrama, 154);
 		actor1.AddPerformance();
-		actor1.ChangeGenre("Comedy");
 		if (actor1.isManOfMilitaryAge()) cout << actor1.getName() << " is a man of military age." << endl;
 		else cout << actor1.getName() << " is not a man of military age." << endl;
 		cout << actor1.Info() << "\n\n\n";
 
 		Actor actor2("Oleksa", "Ivanivna", 32, 69, 180, Gender::female, "Oleksa.gmail", Genre::Comedy, 46);
 		actor2.AddPerformance();
-		actor2.ChangeGenre("Drama");
+		actor2.ChangeGenre(Genre::Drama);
 		cout << actor2.Info() << "\n\n\n";
 
-		Actor actor3("Ivanka", "Olegivna", 17, 57, 176, Gender::female, "Ivanka.gmail", Genre::Comedy, 15);
+		Actor actor3("Ivanka", "Olegivna", 17, 57, 176, Gender::female, "Ivanka.gmail", Genre::Melodrama, 15);
 		actor3.AddPerformance();
-		actor3.ChangeGenre("Drama");
+		actor3.ChangeGenre(Genre::Drama);
 		cout << actor3.Info() << "\n\n";
 
 		cout << "'Drama' actors:";
